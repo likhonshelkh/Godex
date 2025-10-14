@@ -1,11 +1,25 @@
+import { useEffect } from "react";
 import { ChatComposer } from "./ChatComposer";
 import { ChatSidePanel } from "./ChatSidePanel";
 import { ChatTranscript } from "./ChatTranscript";
 import { useChatSession } from "../../../hooks/useChatSession";
 
 export function ChatShell() {
-  const { messages, metadata, isStreaming, error, sendMessage, stop, clearError } =
+  const {
+    messages,
+    metadata,
+    isStreaming,
+    error,
+    sendMessage,
+    resume,
+    stop,
+    clearError,
+  } =
     useChatSession();
+
+  useEffect(() => {
+    resume();
+  }, [resume]);
 
   return (
     <section

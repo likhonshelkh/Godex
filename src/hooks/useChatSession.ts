@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
+import type { MetadataEntry } from "../domain/chat";
 import {
   ChatMessage,
   ChatMessageStatus,
   ChatStreamEvent,
+  deserializeMessage,
+  serializeMessage,
 } from "../domain/chat";
 import { ChatSession, createAssistantPlaceholder } from "../services/chatSession";
-
-export interface MetadataEntry {
-  label: string;
-  value: string;
-}
+import type { StoredChatState } from "../services/chatStorage";
+import { loadChatState, saveChatState } from "../services/chatStorage";
 
 interface ChatState {
   messages: ChatMessage[];
@@ -36,6 +36,25 @@ const initialState: ChatState = {
   error: null,
   activeMessageId: undefined,
 };
+
+function initializeState(): ChatState {
+  if (typeof window === "undefined") {
+    return initialState;
+  }
+
+  const stored = loadChatState();
+  if (!stored) {
+    return initialState;
+  }
+
+  return {
+    messages: stored.messages.map(deserializeMessage),
+    metadata: stored.metadata,
+    isStreaming: stored.isStreaming,
+    error: null,
+    activeMessageId: stored.activeMessageId,
+  };
+}
 
 function cloneMessage(message: ChatMessage) {
   return new ChatMessage({
@@ -134,12 +153,27 @@ function reducer(state: ChatState, action: Action): ChatState {
 }
 
 export function useChatSession() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, initializeState);
   const sessionRef = useRef<ChatSession | null>(null);
 
   if (!sessionRef.current) {
     sessionRef.current = new ChatSession();
   }
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const snapshot: StoredChatState = {
+      messages: state.messages.map(serializeMessage),
+      metadata: state.metadata,
+      isStreaming: state.isStreaming,
+      activeMessageId: state.activeMessageId,
+    };
+
+    saveChatState(snapshot);
+  }, [state.messages, state.metadata, state.isStreaming, state.activeMessageId]);
 
   useEffect(() => {
     const session = sessionRef.current;
@@ -196,6 +230,7 @@ export function useChatSession() {
       session.startStream(
         { messages: history },
         {
+          messageId: assistantPlaceholder.id,
           onEvent: handleStreamEvent(assistantPlaceholder.id),
           onError: (message) => dispatch({ type: "SET_ERROR", error: message }),
           onClose: () => dispatch({ type: "RESET_STREAM" }),
@@ -204,6 +239,20 @@ export function useChatSession() {
     },
     [handleStreamEvent, state.messages],
   );
+
+  const resume = useCallback(() => {
+    const session = sessionRef.current;
+    if (!session || !state.isStreaming || !state.activeMessageId) {
+      return false;
+    }
+
+    return session.resume({
+      messageId: state.activeMessageId,
+      onEvent: handleStreamEvent(state.activeMessageId),
+      onError: (message) => dispatch({ type: "SET_ERROR", error: message }),
+      onClose: () => dispatch({ type: "RESET_STREAM" }),
+    });
+  }, [handleStreamEvent, state.activeMessageId, state.isStreaming]);
 
   const stop = useCallback(() => {
     const session = sessionRef.current;
@@ -231,6 +280,7 @@ export function useChatSession() {
     isStreaming: state.isStreaming,
     error: state.error,
     sendMessage,
+    resume,
     stop,
     clearError,
   };
