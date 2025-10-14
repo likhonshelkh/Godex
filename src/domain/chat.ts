@@ -1,5 +1,10 @@
 export type ChatRole = "user" | "assistant" | "system" | "tool";
 
+export interface MetadataEntry {
+  label: string;
+  value: string;
+}
+
 export type ChatMessageStatus = "queued" | "streaming" | "completed" | "errored";
 
 export interface ChatToolCall {
@@ -87,6 +92,43 @@ export class ChatMessage {
   private touch() {
     this.updatedAt = new Date();
   }
+}
+
+export interface ChatMessageSnapshot {
+  id: string;
+  role: ChatRole;
+  content: string;
+  status: ChatMessageStatus;
+  isStreaming: boolean;
+  toolCall: ChatToolCall | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export function serializeMessage(message: ChatMessage): ChatMessageSnapshot {
+  return {
+    id: message.id,
+    role: message.role,
+    content: message.content,
+    status: message.status,
+    isStreaming: message.isStreaming,
+    toolCall: message.toolCall,
+    createdAt: message.createdAt.toISOString(),
+    updatedAt: message.updatedAt.toISOString(),
+  };
+}
+
+export function deserializeMessage(snapshot: ChatMessageSnapshot): ChatMessage {
+  return new ChatMessage({
+    id: snapshot.id,
+    role: snapshot.role,
+    content: snapshot.content,
+    status: snapshot.status,
+    isStreaming: snapshot.isStreaming,
+    toolCall: snapshot.toolCall,
+    createdAt: new Date(snapshot.createdAt),
+    updatedAt: new Date(snapshot.updatedAt),
+  });
 }
 
 export interface StreamDeltaEvent {

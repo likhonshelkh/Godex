@@ -1,4 +1,4 @@
-import { MetadataEntry } from "../../../hooks/useChatSession";
+import type { MetadataEntry } from "../../../domain/chat";
 
 const promptLibrary = [
   {
