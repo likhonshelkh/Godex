@@ -2,6 +2,7 @@ import { Hero } from "./components/sections/Hero";
 import { ValuePillars } from "./components/sections/ValuePillars";
 import { Workflow } from "./components/sections/Workflow";
 import { Showcase } from "./components/sections/Showcase";
+import { ChatShell } from "./components/sections/Chat";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Footer } from "./components/sections/Footer";
 
@@ -22,6 +23,7 @@ function App() {
           <a href="#features">Features</a>
           <a href="#workflow">Workflow</a>
           <a href="#showcase">Platform</a>
+          <a href="#chat">Console</a>
           <a href="#stories">Stories</a>
         </nav>
         <div className="hidden items-center gap-4 md:flex">
@@ -45,6 +47,7 @@ function App() {
         <div id="showcase">
           <Showcase />
         </div>
+        <ChatShell />
         <div id="stories">
           <Testimonials />
         </div>
