@@ -12,6 +12,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

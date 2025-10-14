@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { ChatMessage, ChatMessageStatus } from "../../../domain/chat";
 import { Badge } from "../../ui/badge";
 import { Button } from "../../ui/button";
+import { MessageContent } from "../../message";
 
 interface ChatTranscriptProps {
   messages: ChatMessage[];
@@ -83,13 +84,7 @@ export function ChatTranscript({
                   </div>
                   <StatusPill status={message.status} />
                 </div>
-                <p className="whitespace-pre-wrap text-sm leading-relaxed text-content-strong">
-                  {message.content.trim().length > 0
-                    ? message.content
-                    : message.isStreaming
-                      ? "Godex is thinking…"
-                      : "Awaiting response."}
-                </p>
+                <MessageContent message={message} isStreaming={message.isStreaming} />
                 {message.isStreaming ? <StreamingBar /> : null}
               </article>
             ))
