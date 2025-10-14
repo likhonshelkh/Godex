@@ -2,7 +2,7 @@
 
 ## Verification Steps
 1. Confirm all checklist boxes in `03-implement-streaming.md` are checked.
-2. Run `npx vitest run src/services/__tests__/godexClient.spec.ts` and confirm all tests pass.
+2. Run `npm run test:services` and confirm all tests pass.
 3. Run `npm run typecheck` to ensure the codebase compiles without issues.
 4. Inspect for leftover TODO stubs:
    - `rg "NotYetImplemented" src/services src/hooks lib/server` should yield no matches.

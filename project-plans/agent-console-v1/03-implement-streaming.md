@@ -20,7 +20,7 @@ Replace stubs with working logic that streams reasoning updates from the orchest
 
 ## Self-verify
 Run:
-- `npx vitest run src/services/__tests__/godexClient.spec.ts`
+- `npm run test:services`
 - `npm run typecheck`
 
 STOP. Wait for Phase 03 verification.

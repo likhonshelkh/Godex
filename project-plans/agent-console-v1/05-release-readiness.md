@@ -20,6 +20,6 @@ Ensure the streaming console feature is production-ready with documentation, obs
 ## Self-verify
 Run:
 - `npm run typecheck`
-- `npx vitest run src/services/__tests__/godexClient.spec.ts`
+- `npm run test:services`
 
 STOP. Wait for Phase 05 verification.

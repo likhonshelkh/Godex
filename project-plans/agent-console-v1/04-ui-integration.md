@@ -11,6 +11,7 @@ Expose the new streaming orchestration through the marketing demo console, ensur
 - `src/components/sections/Chat/ChatSidePanel.tsx`: show structured metadata (timeline, environments, blockers) emitted by the orchestrator.
 - `src/styles/tokens.css` (or relevant file): add tokens/utilities required for new status badges.
 - Update documentation snippet in `README.md` to describe the live console behaviour.
+- `reports/phase-04a-console-states.png`: capture a single image showing streaming, completed, and errored transcript states via the running dev server for verification.
 
 ## Checklist (implementer)
 - [ ] Chat transcript visually distinguishes streaming, completed, and errored messages.
@@ -21,7 +22,7 @@ Expose the new streaming orchestration through the marketing demo console, ensur
 ## Self-verify
 Run:
 - `npm run typecheck`
-- `npx vitest run src/services/__tests__/godexClient.spec.ts`
+- `npm run test:services`
 - `npm run build`
 
 STOP. Wait for Phase 04 verification.

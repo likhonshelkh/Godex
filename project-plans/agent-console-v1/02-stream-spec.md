@@ -6,6 +6,7 @@
 Define executable specifications that describe how the Godex client should interact with the orchestrator through streaming events and persistence.
 
 ## Deliverables
+- `package.json`: add a `test:services` script that runs Vitest in non-watch mode for the service specs and include `vitest` plus supporting `@vitest/coverage-v8` and `@vitest/ui` packages in `devDependencies`.
 - `vitest.config.ts`: introduce a Vitest configuration aligned with the existing Vite setup.
 - `src/services/__tests__/godexClient.spec.ts`: author tests covering `streamConversation()` and `resumeConversation()` behaviour, mocking network transports and ensuring correct event forwarding.
 - `src/services/__tests__/__fixtures__/streaming.ts`: reusable helpers for fake SSE payloads and transcript assembly.
@@ -17,6 +18,6 @@ Define executable specifications that describe how the Godex client should inter
 
 ## Self-verify
 Run the following and observe failing tests (expected at this phase):
-- `npx vitest run src/services/__tests__/godexClient.spec.ts`
+- `npm run test:services`
 
 STOP. Wait for Phase 02 verification.

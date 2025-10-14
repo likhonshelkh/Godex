@@ -2,7 +2,7 @@
 
 ## Verification Steps
 1. Confirm all checklist boxes in `05-release-readiness.md` are checked.
-2. Run `npm run typecheck` and `npx vitest run src/services/__tests__/godexClient.spec.ts`; both must pass.
+2. Run `npm run typecheck` and `npm run test:services`; both must pass.
 3. Validate documentation updates:
    - `test -f docs/agent-console/operations.md`
    - `rg "telemetry" src/services/telemetry.ts` to confirm event hooks exist.
