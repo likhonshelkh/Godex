@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Godex Search</ShortName>
+  <Description>Search insights, product docs, and updates from Godex, the autonomous AI coding partner.</Description>
+  <Tags>Godex AI autonomous coding agents</Tags>
+  <Contact>hello@godex.ai</Contact>
+  <Url type="text/html" method="get" template="https://godex.ai/search?q={searchTerms}" />
+  <Url type="application/json" method="get" template="https://godex.ai/api/search?q={searchTerms}&amp;page={startPage?}" />
+  <Image height="32" width="32" type="image/png">https://godex.ai/icons/icon-32x32.png</Image>
+  <LongName>Godex Autonomous Coding Partner Search</LongName>
+  <Developer>Godex Labs</Developer>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Language>en-us</Language>
+</OpenSearchDescription>
