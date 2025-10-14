@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter';
+    --color-surface-primary: 230 35% 6%;
+    --color-surface-muted: 228 28% 12%;
+    --color-surface-elevated: 222 30% 16%;
+    --color-surface-inverted: 0 0% 100%;
+    --color-content-strong: 210 40% 96%;
+    --color-content-subtle: 216 20% 70%;
+    --color-accent-primary: 266 88% 67%;
+    --color-accent-secondary: 189 86% 53%;
+    --color-accent-tertiary: 326 77% 64%;
+    --color-border-soft: 222 40% 18%;
+    --color-border-strong: 220 70% 55%;
+    --gradient-start: 266 88% 67%;
+    --gradient-mid: 292 82% 63%;
+    --gradient-end: 189 86% 53%;
+    --elevation-ring: hsla(var(--color-accent-primary), 0.35);
+  }
+
+  body {
+    @apply min-h-screen bg-surface-primary text-content-strong font-sans;
+    background-image: radial-gradient(circle at top left, hsla(var(--color-accent-secondary), 0.35), transparent 55%),
+      radial-gradient(circle at bottom right, hsla(var(--color-accent-tertiary), 0.2), transparent 60%);
+  }
+
+  ::selection {
+    background: hsla(var(--color-accent-primary), 0.4);
+    color: hsl(var(--color-surface-inverted));
+  }
+
+  a {
+    @apply text-content-strong transition-colors duration-200 ease-out;
+  }
+
+  a:hover {
+    color: hsl(var(--color-accent-secondary));
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply bg-surface-elevated/80 backdrop-blur rounded-3xl border border-border-soft/60 shadow-subtle;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(120deg, hsl(var(--color-accent-primary)), hsl(var(--color-accent-tertiary)));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
