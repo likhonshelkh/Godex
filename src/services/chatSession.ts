@@ -161,6 +161,8 @@ export class ChatSession {
       const history = payload.messages.map((message) => ({
         role: message.role,
         content: message.content,
+        parts: message.parts,
+        attachments: message.attachments,
       }));
 
       url.searchParams.set("messages", JSON.stringify(history));

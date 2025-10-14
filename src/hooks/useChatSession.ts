@@ -60,7 +60,8 @@ function cloneMessage(message: ChatMessage) {
   return new ChatMessage({
     id: message.id,
     role: message.role,
-    content: message.content,
+    parts: message.parts,
+    attachments: message.attachments,
     status: message.status,
     isStreaming: message.isStreaming,
     toolCall: message.toolCall,
