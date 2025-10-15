@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { clsx } from "clsx";
+import clsx from "clsx";
 
 const badgeVariants = cva(
   "inline-flex items-center gap-2 rounded-full border text-xs font-medium uppercase tracking-[0.12em]",

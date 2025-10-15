@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { clsx } from "clsx";
+import clsx from "clsx";
 import { forwardRef } from "react";
 
 type ButtonElement = HTMLButtonElement;
