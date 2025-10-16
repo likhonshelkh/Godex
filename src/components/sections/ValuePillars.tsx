@@ -2,21 +2,21 @@ import { CircuitBoard, Workflow as WorkflowIcon, ShieldCheck } from "lucide-reac
 
 const pillars = [
   {
-    title: "Deep orchestration",
+    title: "Deep orchestration vision",
     description:
-      "Guide Gemini-powered agents through complex builds with multi-step strategies, native tool handoffs, and contextual guardrails.",
+      "Outline how Gemini-powered agents could tackle multi-step builds with native tool handoffs and contextual guardrails.",
     icon: WorkflowIcon,
   },
   {
-    title: "Unified execution",
+    title: "Unified execution concept",
     description:
-      "Blend local sandboxes, WebContainers, and cloud runtimes into one seamless canvas that iterates alongside your team.",
+      "Describe the intended blend of local sandboxes, WebContainers, and cloud runtimes that would iterate alongside your team.",
     icon: CircuitBoard,
   },
   {
     title: "Quality fused in",
     description:
-      "Enforce architectural patterns, test coverage, and review workflows automatically before every merge to production.",
+      "Showcase the plan for automated architectural patterns, test coverage, and reviews that the full product aims to enforce.",
     icon: ShieldCheck,
   },
 ];

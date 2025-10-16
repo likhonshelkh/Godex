@@ -3,9 +3,9 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 const stats = [
-  { label: "Faster Delivery", value: "12x" },
-  { label: "Code Quality Gate", value: "99%" },
-  { label: "Integrations", value: "40+" },
+  { label: "Tech stack", value: "Vite + React" },
+  { label: "Styling", value: "Tailwind CSS" },
+  { label: "Content", value: "Concept preview" },
 ];
 
 export function Hero() {
@@ -20,10 +20,10 @@ export function Hero() {
         </Badge>
         <div className="space-y-6">
           <h1 className="font-display text-4xl leading-tight tracking-tight text-balance sm:text-5xl md:text-6xl">
-            Make big leaps with Godex, the autonomous coding partner built for audacious teams
+            Explore the Godex concept: an autonomous coding partner for audacious teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-content-subtle md:text-xl">
-            Orchestrate deep-thinking agents, ship production-ready features, and keep every line of code aligned with your highest engineering standards.
+            Preview the workflows, guardrails, and design principles behind Godex without assuming a live automation backend.
           </p>
         </div>
         <div className="flex flex-col items-center justify-center gap-4 md:flex-row">

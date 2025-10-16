@@ -4,19 +4,19 @@ const steps = [
   {
     title: "Strategize",
     description:
-      "Frame the intent, scope, and constraints in natural language. Godex translates goals into executable playbooks instantly.",
+      "Frame the intent, scope, and constraints in natural language. This concept shows how Godex could translate goals into executable playbooks.",
     icon: Lightbulb,
   },
   {
     title: "Construct",
     description:
-      "Autonomous agents explore frameworks, generate code, and run tests inside tailored environments using your guardrails.",
+      "Explore how autonomous agents might generate code and run tests inside tailored environments while respecting guardrails.",
     icon: Code2,
   },
   {
     title: "Evolve",
     description:
-      "Review diffs, share context, and merge with confidence while Godex monitors quality gates, dependencies, and release notes.",
+      "Review diffs, share context, and prepare releases with quality gates, dependencies, and notes highlighted for the future product.",
     icon: GitBranch,
   },
 ];
@@ -33,7 +33,7 @@ export function Workflow() {
             A cinematic workflow that keeps momentum high
           </h2>
           <p className="text-lg leading-relaxed text-content-subtle">
-            Follow a transparent journey from idea to shipped feature with smart checkpoints, contextual insights, and collaborative controls.
+            Follow a transparent journey from idea to shipped feature with smart checkpoints, contextual insights, and collaborative controls—presented here as a forward-looking narrative.
           </p>
         </header>
         <div className="grid gap-8 md:grid-cols-3">
